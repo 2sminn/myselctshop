@@ -29,7 +29,4 @@ public class FolderController {
     public List<FolderResponseDto> getFolders(@AuthenticationPrincipal UserDetailsImpl userDetails){
         return folderService.getFolders(userDetails.getUser());
     }
-
-
-
 }
