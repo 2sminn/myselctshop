@@ -43,7 +43,8 @@ public class ProductService {
         return new ProductResponseDto(product);
     }
 
-    // .var: 타입에 맞게 변수만들어줌, iter: 향상된 for문 만들어줌!!
+    // .var: 타입에 맞게 변수만들어줌 / iter: 향상된 for문 만들어줌!!
+    @Transactional(readOnly = true)
     public Page<ProductResponseDto> getProducts(User user, int page, int size, String sortBy, boolean isAsc) {
         // 페이징 처리
         Sort.Direction direction = isAsc ? Sort.Direction.ASC : Sort.Direction.DESC;
