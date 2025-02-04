@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProductService {
@@ -31,5 +34,17 @@ public class ProductService {
                 new NullPointerException("해당 상품을 찾을 수 없습니다."));
         product.update(requestDto);
         return new ProductResponseDto(product);
+    }
+
+    // .var: 타입에 맞게 변수만들어줌, iter: 향상된 for문 만들어줌!!
+    public List<ProductResponseDto> getProducts() {
+
+        List<ProductResponseDto> responseDtoList = new ArrayList<>();
+        List<Product> productList = productRepository.findAll();
+
+        for (Product product : productList) {
+            responseDtoList.add(new ProductResponseDto(product));
+        }
+        return responseDtoList;
     }
 }
