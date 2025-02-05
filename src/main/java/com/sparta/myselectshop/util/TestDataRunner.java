@@ -35,9 +35,12 @@ public class TestDataRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        // 테스트 User 생성
-        User testUser = new User("Robbie", passwordEncoder.encode("1234"), "robbie@sparta.com", UserRoleEnum.USER);
-        testUser = userRepository.save(testUser);
+        // 중복 체크: 해당 이메일을 가진 유저가 이미 존재하는지 확인
+        User testUser = userRepository.findByEmail("robbie@sparta.com")
+                .orElseGet(() -> {
+                    User newUser = new User("Robbie", passwordEncoder.encode("1234"), "robbie@sparta.com", UserRoleEnum.USER);
+                    return userRepository.save(newUser);
+                });
 
         // 테스트 User 의 관심상품 등록
         // 검색어 당 관심상품 10개 등록

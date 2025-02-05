@@ -2,11 +2,14 @@ package com.sparta.myselectshop.mvc;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
+import org.junit.jupiter.api.Disabled;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 
+@Disabled
 public class MockSpringSecurityFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) {}
