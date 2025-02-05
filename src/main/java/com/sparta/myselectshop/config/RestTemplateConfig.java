@@ -15,8 +15,8 @@ public class RestTemplateConfig  {
                 // RestTemplate 으로 외부 API 호출 시 일정 시간이 지나도 응답이 없을 때
                 // 무한 대기 상태 방지를 위해 강제 종료 설정
                 // 외부 서버에서 5초안에 응답을 주지않으면 연락 끊기!!
-                .setConnectTimeout(Duration.ofSeconds(5)) // 5초
-                .setReadTimeout(Duration.ofSeconds(5)) // 5초
+                .connectTimeout(Duration.ofSeconds(5)) // 5초
+                .readTimeout(Duration.ofSeconds(5)) // 5초
                 .build();
     }
 }
